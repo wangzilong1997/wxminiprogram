@@ -1,6 +1,8 @@
 {
-  "pages": [
+  "pages":[
     "pages/welcome/welcome"
   ],
-  "sitemapLocation": "sitemap35.json"
+  "window": {
+    "navigationBarBackgroundColor": "#b3d4db"
+  }
 }

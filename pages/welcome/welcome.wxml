@@ -2,7 +2,7 @@
 <view class="container">
   <image class="user-avatar" src="/images/avatar/1.png"></image>
   <text class="user-name">hello</text>
-  <view>
-    <text>点击获取详细信息</text>
+  <view class="moto-container">
+    <text class="moto">点击获取详细信息</text>
   </view>
 </view>
