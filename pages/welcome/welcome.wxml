@@ -1,7 +1,7 @@
 
-<view>
-  <image style="width:200rpx;height:200rpx;" src="/images/avatar/1.png"></image>
-  <text>hello</text>
+<view class="container">
+  <image class="user-avatar" src="/images/avatar/1.png"></image>
+  <text class="user-name">hello</text>
   <view>
     <text>点击获取详细信息</text>
   </view>

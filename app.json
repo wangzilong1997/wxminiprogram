@@ -1,5 +1,6 @@
 {
-  "pages":[
+  "pages": [
     "pages/welcome/welcome"
-  ]
+  ],
+  "sitemapLocation": "sitemap35.json"
 }
