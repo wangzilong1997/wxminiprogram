@@ -1,0 +1,8 @@
+<view>
+<swiper style="height:500rpx;">
+<swiper-item><image style="width:100%;" src="/images/post/xiaolong.jpg"></image></swiper-item>
+<swiper-item>content</swiper-item>
+<swiper-item>content</swiper-item>
+<swiper-item>content</swiper-item>
+</swiper>
+</view>
