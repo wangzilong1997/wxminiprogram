@@ -1,8 +1,16 @@
 <view>
-<swiper style="height:500rpx;">
-<swiper-item><image style="width:100%;" src="/images/post/xiaolong.jpg"></image></swiper-item>
-<swiper-item>content</swiper-item>
-<swiper-item>content</swiper-item>
-<swiper-item>content</swiper-item>
-</swiper>
+  <swiper indicator-dots="true" autoplay="true">
+  <swiper-item>
+    <image src="/images/post/xiaolong.jpg"></image>
+  </swiper-item>
+  <swiper-item>
+    <image src="/images/post/vr.png"></image>
+  </swiper-item>
+  <swiper-item>
+    <image src="/images/post/bl.png"></image>
+  </swiper-item>
+  <swiper-item>
+    <image src="/images/post/sls.jpg"></image>
+  </swiper-item>
+  </swiper>
 </view>
