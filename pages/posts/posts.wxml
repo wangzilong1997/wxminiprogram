@@ -13,19 +13,20 @@
     <image src="/images/post/sls.jpg"></image>
   </swiper-item>
   </swiper>
-  <view>
-    <view>
-      <image src="/images/avatar/1.png"></image>
-      <text>sep 18 2016</text>
+
+  <view class="post-container">
+    <view class="post-author-date">
+      <image class="post-author" src="/images/avatar/1.png"></image>
+      <text class="post-date">sep 18 2016</text>
     </view>
-    <text>正是虾蟹肥壮时</text>
-    <image src="/images/post/crab.png"></image>
-    <text>正是虾蟹肥壮时正是虾蟹肥壮时正是虾蟹肥壮时正是虾蟹肥壮时正是虾蟹肥壮时正是虾蟹肥壮时正是虾蟹肥壮时正是虾蟹肥壮时正是虾蟹肥壮时正是虾蟹肥壮时正是虾蟹肥壮时正是虾蟹肥壮时</text>
-    <view>
-      <image src="/images/icon/chat.png"></image>
-      <text>96</text>
-      <image src="/images/icon/view.png"></image>
-      <text>112</text>
+    <text class="post-title">正是虾蟹肥壮时</text>
+    <image class="post-image" src="/images/post/crab.png"></image>
+    <text class="post-content">正是虾蟹肥壮时正是虾蟹肥壮时正是虾蟹肥壮时正是虾蟹肥壮时正是虾蟹肥壮时正是虾蟹肥壮时正是虾蟹肥壮时正是虾蟹肥壮时正是虾蟹肥壮时正是虾蟹肥壮时正是虾蟹肥壮时正是虾蟹肥壮时</text>
+    <view class="post-like">
+      <image class="post-like-image" src="/images/icon/chat.png"></image>
+      <text class="post-like-font">96</text>
+      <image class="post-like-image"  src="/images/icon/view.png"></image>
+      <text class="post-like-font">112</text>
     </view>
   </view>
 
