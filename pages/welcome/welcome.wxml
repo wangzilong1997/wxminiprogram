@@ -3,6 +3,6 @@
   <image class="user-avatar" src="/images/avatar/1.png"></image>
   <text class="user-name">hello</text>
   <view class="moto-container" bindtap="onTap">
-    <text class="moto">点击获取详细信息</text>
+    <text class="moto" catchtap="onTap">点击获取详细信息</text>
   </view>
 </view>
