@@ -1,4 +1,6 @@
 // pages/posts/posts.js
+
+var postsData = require('../../data/posts-item.js')
 Page({
 
   /**
@@ -12,27 +14,8 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-      var post_content = [{
-        date:"sep 18 2016",
-        title:"正是虾蟹肥壮时",
-        post_img:"/images/post/crab.png",
-        content:"正是虾蟹肥壮时正是虾蟹肥壮时正是虾蟹肥壮时正是虾蟹肥壮时正是虾蟹肥壮时正是虾蟹肥壮时正是虾蟹肥壮时正是虾蟹肥壮时正是虾蟹肥壮时正是虾蟹肥壮时正是虾蟹肥壮时正是虾蟹肥壮时",
-        view_num:"112",
-        collect_num:"88",
-        author_img:"/images/avatar/1.png"
-      },
-      {date: "sep 18 2016",
-      title: "正是虾蟹肥壮时",
-      post_img: "/images/post/crab.png",
-      content: "正是虾蟹肥壮时正是虾蟹肥壮时正是虾蟹肥壮时正是虾蟹肥壮时正是虾蟹肥壮时正是虾蟹肥壮时正是虾蟹肥壮时正是虾蟹肥壮时正是虾蟹肥壮时正是虾蟹肥壮时正是虾蟹肥壮时正是虾蟹肥壮时",
-      view_num: "112",
-      collect_num: "88",
-      author_img: "/images/avatar/1.png"
-      }
-      
-      ]
     this.setData({
-      posts_content: post_content
+      posts_content: postsData.postList
     })
   },
 
