@@ -43,6 +43,16 @@ Page({
     console.log("postCollected", postCollected)
     postCollected = !postCollected;
     postsCollected[this.data.currentPostId] = postCollected;
+
+    //两种提示框
+    this.showToast(postsCollected, postCollected);
+    //this.showModal(postsCollected, postCollected);
+
+  },
+  onShareTap:function(event){
+   
+  },
+  showToast: function (postsCollected,postCollected){
     wx.setStorageSync("posts_collected", postsCollected)
     this.setData({
       collected: postCollected
@@ -50,13 +60,28 @@ Page({
 
     //提示框
     wx.showToast({
-      title: postCollected?"收藏成功":"取消成功",
-      duration:1000,
-      icon:"success"
+      title: postCollected ? "收藏成功" : "取消成功",
+      duration: 1000,
+      icon: "success"
     })
-
   },
-  onShareTap:function(event){
-   
+  showModal: function (postsCollected, postCollected){
+    var that =this;
+    wx.showModal({
+      title: '收藏',
+      content: postCollected?'收藏该文章吗？':'取消收藏吗？',
+      cancelText:'取消',
+      cancelColor:"#666",
+      confirmText:'确定',
+      confirmColor:'#405f80',
+      success:function(res){
+        if(res.confirm){
+          wx.setStorageSync("posts_collected", postsCollected)
+          that.setData({
+            collected: postCollected
+          })
+        }
+      }
+    })
   }
 })
