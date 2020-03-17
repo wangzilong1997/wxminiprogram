@@ -15,19 +15,40 @@ Page({
    */
   onLoad: function (options) {
     var postid = options.id;
-    console.log(postid);
+    this.data.currentPostId = postid;
     var postData = postsData.postList[postid];
-    console.log(postData);
-    this.setData(postData);
-    
-    wx.setStorageSync('key', postData)
+    this.setData({postData})
+
+    //是否收藏部分
+    var postsCollected = wx.getStorageSync("posts_collected");
+    if (postsCollected){
+      var postCollected = postsCollected[postid];
+      this.setData({
+          collected: postCollected
+      })
+    }else{
+      var postsCollected = {};
+      console.log(postid)
+      postsCollected[postid] = false;
+      wx.setStorageSync('posts_collected', postsCollected)
+    }
+
+
 
   },
   onCollectionTap:function(event){
-    console.log(wx.getStorageSync('key'))
+    var postsCollected = wx.getStorageSync("posts_collected");
+    console.log("postsCollected", postsCollected)
+    var postCollected = postsCollected[this.data.currentPostId];
+    console.log("postCollected", postCollected)
+    postCollected = !postCollected;
+    postsCollected[this.data.currentPostId] = postCollected;
+    wx.setStorageSync("posts_collected", postsCollected)
+    this.setData({
+      collected: postCollected
+    })
   },
   onShareTap:function(event){
-    //wx.removeStorageSync('key');
-    wx.clearStorageSync();
+   
   }
 })
