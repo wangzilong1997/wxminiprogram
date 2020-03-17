@@ -19,5 +19,15 @@ Page({
     var postData = postsData.postList[postid];
     console.log(postData);
     this.setData(postData);
+    
+    wx.setStorageSync('key', postData)
+
+  },
+  onCollectionTap:function(event){
+    console.log(wx.getStorageSync('key'))
+  },
+  onShareTap:function(event){
+    //wx.removeStorageSync('key');
+    wx.clearStorageSync();
   }
 })
