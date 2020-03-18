@@ -7,7 +7,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    isPlayingMusic:false
   },
 
   /**
@@ -83,7 +83,7 @@ Page({
      success:function(res){
         wx.showModal({
           title: '用户' + itemList[res.tapIndex],
-          content: '用户是否取消?'+res.cancel+"现在无法实现分享功能",
+          content: '用户是否取消?' + itemList[res.tapIndex]+"现在无法实现分享功能",
         })
      }
    })
@@ -119,5 +119,30 @@ Page({
         }
       }
     })
+  },
+  onMusicTap:function(event){
+    var currentPostId = this.data.currentPostId;
+    console.log(postsData.postList[currentPostId])
+    const backgroundAudioManager = wx.getBackgroundAudioManager()
+
+    backgroundAudioManager.title = postsData.postList[currentPostId].music.title
+    backgroundAudioManager.coverImgUrl = postsData.postList[currentPostId].music.coverImg
+    // 设置了 src 之后会自动播放
+    backgroundAudioManager.src = postsData.postList[currentPostId].music.url
+
+    var isPlayingMusic = this.data.isPlayingMusic;
+    if (isPlayingMusic){
+      backgroundAudioManager.pause()
+      this.setData({
+        isPlayingMusic: false
+      })
+    }else{
+      backgroundAudioManager.play()
+      this.setData({
+        isPlayingMusic: true
+      })
+    }
+    
+    
   }
 })
