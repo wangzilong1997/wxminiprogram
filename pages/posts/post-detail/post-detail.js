@@ -37,6 +37,26 @@ Page({
 
   },
   onCollectionTap:function(event){
+    //this.onPostscollectedSyc();
+    this.onPostscollected();
+  },
+  onPostscollected:function(){
+    var that = this;
+    wx.getStorage({
+      key: 'posts_collected',
+      success: function(res) {
+        var postsCollected = res.data;
+        var postCollected = postsCollected[that.data.currentPostId];
+        console.log("postCollected", postCollected)
+        postCollected = !postCollected;
+        postsCollected[that.data.currentPostId] = postCollected;
+
+        //两种提示框
+        that.showToast(postsCollected, postCollected);
+      },
+    })
+  },
+  onPostscollectedSyc:function(){
     var postsCollected = wx.getStorageSync("posts_collected");
     console.log("postsCollected", postsCollected)
     var postCollected = postsCollected[this.data.currentPostId];
@@ -47,8 +67,9 @@ Page({
     //两种提示框
     this.showToast(postsCollected, postCollected);
     //this.showModal(postsCollected, postCollected);
-
   },
+
+
   onShareTap:function(event){
     var itemList = [
       "分享给微信好友",
