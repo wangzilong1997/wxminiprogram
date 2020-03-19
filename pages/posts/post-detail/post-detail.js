@@ -33,6 +33,16 @@ Page({
       wx.setStorageSync('posts_collected', postsCollected)
     }
 
+    wx.onBackgroundAudioPlay(()=>{
+      this.setData({
+        isPlayingMusic: true
+      })
+    })
+    wx.onBackgroundAudioPause(() => {
+      this.setData({
+        isPlayingMusic: false
+      })
+    })
 
 
   },
