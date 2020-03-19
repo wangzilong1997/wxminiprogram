@@ -1,5 +1,5 @@
 // pages/posts/post-detail/post-detail.js
-
+var app = getApp();
 var postsData = require('../../../data/posts-item.js')
 Page({
 
@@ -14,6 +14,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    var globalData = app.globalData;
     var postid = options.id;
     this.data.currentPostId = postid;
     var postData = postsData.postList[postid];
@@ -32,19 +33,27 @@ Page({
       postsCollected[postid] = false;
       wx.setStorageSync('posts_collected', postsCollected)
     }
-
-    wx.onBackgroundAudioPlay(()=>{
+    
+    if(app.globalData.g_isPlayingMusic){
+      this.setData({
+        isPlayingMusic: true
+      });
+    }
+    this.setAudioMonitor()
+  },
+  setAudioMonitor:function(){
+    wx.onBackgroundAudioPlay(() => {
       this.setData({
         isPlayingMusic: true
       })
+      app.globalData.g_isPlayingMusic = true
     })
     wx.onBackgroundAudioPause(() => {
       this.setData({
         isPlayingMusic: false
       })
+      app.globalData.g_isPlayingMusic = false
     })
-
-
   },
   onCollectionTap:function(event){
     //this.onPostscollectedSyc();
