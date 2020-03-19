@@ -34,7 +34,7 @@ Page({
       wx.setStorageSync('posts_collected', postsCollected)
     }
     
-    if(app.globalData.g_isPlayingMusic){
+    if (app.globalData.g_isPlayingMusic && app.globalData.g_currentMusicPostId == postid){
       this.setData({
         isPlayingMusic: true
       });
@@ -47,12 +47,14 @@ Page({
         isPlayingMusic: true
       })
       app.globalData.g_isPlayingMusic = true
+      app.globalData.g_currentMusicPostId = this.data.currentPostId 
     })
     wx.onBackgroundAudioPause(() => {
       this.setData({
         isPlayingMusic: false
       })
       app.globalData.g_isPlayingMusic = false
+      app.globalData.g_currentMusicPostId = null
     })
   },
   onCollectionTap:function(event){
