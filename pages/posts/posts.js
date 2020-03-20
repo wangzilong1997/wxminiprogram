@@ -28,5 +28,12 @@ Page({
       fail: function(res) {},
       complete: function(res) {},
     })
+  },
+  onSwiperTap:function(event){
+    var postId = event.target.dataset.postid;
+    console.log(postId)
+    wx.navigateTo({
+      url: 'post-detail/post-detail?id=' + postId,
+    })
   }
 })
