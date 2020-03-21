@@ -7,18 +7,20 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    inTheaters : {},
+    comingSoon : {},
+    top250 : {}
   },
   onLoad:function(event){
     var inTheatersUrl = app.globalData.dobanBase +  "/v2/movie/in_theaters" + "?start=0&count=3";
-    var comingSoonUrl = app.globalData.dobanBase + "/v2/movie/commig_soon" + "?start=0&count=3";
+    var comingSoonUrl = app.globalData.dobanBase + "/v2/movie/coming_soon" + "?start=0&count=3";
     var top250Url = app.globalData.dobanBase + "/v2/movie/top250" + "?start=0&count=3";
-    //this.getMovieListData(top250Url)
-    this.getMovieListData(inTheatersUrl)
-    //this.getMovieListData(comingSoonUrl)
+    this.getMovieListData(top250Url,"top250")
+    this.getMovieListData(inTheatersUrl,"inTheaters")
+    this.getMovieListData(comingSoonUrl,"comingSoon")
    
   },
-  getMovieListData:function(target){
+  getMovieListData:function(target,settedKey){
     var that = this;
     wx.request({
       url: target,
@@ -28,7 +30,7 @@ Page({
       },
       success: function (res) {
         console.log(res)
-        that.processDoubanData(res.data)
+        that.processDoubanData(res.data, settedKey)
       },
       fail: function (res) {
         console.log(res)
@@ -38,7 +40,7 @@ Page({
       }
     })
   },
-  processDoubanData:function(movieDouban){
+  processDoubanData: function (movieDouban, settedKey){
       var movies = [];
       for(var idx in movieDouban.subjects){
         var subject = movieDouban.subjects[idx];
@@ -55,9 +57,12 @@ Page({
         movies.push(temp)
         console.log(movies)
       }
-      this.setData({
-        movies: movies
-      })
+      var readyData = {};
+      readyData[settedKey] = {
+        movies:movies
+      }
+
+      this.setData(readyData)
   }
 
 })
