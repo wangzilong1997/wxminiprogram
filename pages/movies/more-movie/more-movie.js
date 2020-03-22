@@ -66,6 +66,7 @@ Page({
     this.setData({
       movies: totalMovies
     })
+    wx.hideNavigationBarLoading()
   },
   onReady:function(event){
     wx.setNavigationBarTitle({
@@ -73,9 +74,9 @@ Page({
     })
   },
   onScrollLower:function(){
-    
     console.log("下拉刷新")
     var nextUrl = this.data.requestUrl + "?start=" + this.data.totalCount + "&count=20";
     util.http(nextUrl, this.processDoubanData)
+    wx.showNavigationBarLoading();
   }
 })
