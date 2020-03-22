@@ -67,6 +67,7 @@ Page({
       movies: totalMovies
     })
     wx.hideNavigationBarLoading()
+    wx.stopPullDownRefresh()
   },
   onReady:function(event){
     wx.setNavigationBarTitle({
@@ -77,6 +78,20 @@ Page({
     console.log("下拉刷新")
     var nextUrl = this.data.requestUrl + "?start=" + this.data.totalCount + "&count=20";
     util.http(nextUrl, this.processDoubanData)
+    wx.showNavigationBarLoading();
+  },
+  onReachBottom:function(){
+    console.log("下拉刷新")
+    var nextUrl = this.data.requestUrl + "?start=" + this.data.totalCount + "&count=20";
+    util.http(nextUrl, this.processDoubanData)
+    wx.showNavigationBarLoading();
+  },
+  onPullDownRefresh:function(event){
+    console.log("上拉刷新")
+    var refreshUrl = this.data.requestUrl + "?start=" + 0 + "&count=20";
+    this.data.movies = {};
+    this.data.isEmpty = true;
+    util.http(refreshUrl, this.processDoubanData)
     wx.showNavigationBarLoading();
   }
 })
