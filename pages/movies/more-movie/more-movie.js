@@ -8,7 +8,10 @@ Page({
    */
   data: {
     movies:{},
-    navigateTitle:""
+    navigateTitle:"",
+    requestUrl:"",
+    totalCount:0,
+    isEmpty:true
   },
 
   /**
@@ -30,6 +33,7 @@ Page({
         dataUrl = app.globalData.dobanBase + "/v2/movie/top250";
         break;
     }
+    this.data.requestUrl = dataUrl;
     util.http(dataUrl,this.processDoubanData)
   },
   processDoubanData: function(movieDouban){
@@ -49,16 +53,29 @@ Page({
       }
       movies.push(temp)
       console.log(movies)
+      
     }
-  
-
+    var totalMovies = {};
+    this.data.totalCount += 20;
+    if(!this.data.isEmpty){
+      totalMovies = this.data.movies.concat(movies);
+    }else{
+      totalMovies = movies;
+      this.data.isEmpty =false;
+    }
     this.setData({
-      movies:movies
+      movies: totalMovies
     })
   },
   onReady:function(event){
     wx.setNavigationBarTitle({
       title: this.data.navigateTitle
     })
+  },
+  onScrollLower:function(){
+    
+    console.log("下拉刷新")
+    var nextUrl = this.data.requestUrl + "?start=" + this.data.totalCount + "&count=20";
+    util.http(nextUrl, this.processDoubanData)
   }
 })

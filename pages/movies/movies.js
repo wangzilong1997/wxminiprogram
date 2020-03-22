@@ -66,6 +66,9 @@ Page({
 
       this.setData(readyData)
   },
+  onScrollLower:function(){
+      console.log("加载列表")
+  },
   onMoreTap:function(event){
       var category = event.currentTarget.dataset.category;
       wx.navigateTo({
