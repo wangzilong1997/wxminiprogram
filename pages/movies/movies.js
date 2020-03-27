@@ -10,6 +10,7 @@ Page({
     inTheaters : {},
     comingSoon : {},
     top250 : {},
+    searchResult: {},
     containerShow:true,
     searchPanelShow:false
   },
@@ -88,6 +89,11 @@ Page({
       containerShow: true,
       searchPanelShow: false
     })
+  },
+  onBindChange:function(e){
+    var searchUrl = app.globalData.dobanBase + "/v2/movie/search?q="+ e.detail.value
+    console.log(searchUrl)
+    this.getMovieListData(searchUrl,"searchResult","")
   }
 
 })
