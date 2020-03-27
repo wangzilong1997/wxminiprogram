@@ -94,6 +94,12 @@ Page({
     var searchUrl = app.globalData.dobanBase + "/v2/movie/search?q="+ e.detail.value
     console.log(searchUrl)
     this.getMovieListData(searchUrl,"searchResult","")
+  },
+  onMovieTap:function(e){
+    var movieId = e.currentTarget.dataset.movieid;
+    wx.navigateTo({
+      url: 'movie-detail/movie-detail?id=' + movieId
+    })
   }
 
 })
