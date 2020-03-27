@@ -93,5 +93,11 @@ Page({
     this.data.isEmpty = true;
     util.http(refreshUrl, this.processDoubanData)
     wx.showNavigationBarLoading();
+  },
+  onMovieTap: function (e) {
+    var movieId = e.currentTarget.dataset.movieid;
+    wx.navigateTo({
+      url: '../movie-detail/movie-detail?id=' + movieId
+    })
   }
 })
